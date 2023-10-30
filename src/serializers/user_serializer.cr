@@ -3,6 +3,7 @@ class UserSerializer < BaseSerializer
   end
 
   def render
-    {email: @user.email}
+    user_boxes = LeitnerBoxQuery.new.user_id(@user.id)
+    {email: @user.email, leitner_boxe_ids: user_boxes.map(&.id)}
   end
 end
