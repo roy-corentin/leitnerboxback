@@ -12,9 +12,6 @@ services:
         source: .
         target: /app
       - type: volume
-        source: node_modules
-        target: /app/node_modules
-      - type: volume
         source: shards_lib
         target: /app/lib
     depends_on:
