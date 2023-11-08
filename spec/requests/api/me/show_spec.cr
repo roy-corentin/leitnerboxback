@@ -6,7 +6,7 @@ describe Api::Me::Show do
 
     response = ApiClient.auth(user).exec(Api::Me::Show)
 
-    response.should send_json(200, email: user.email)
+    response.should send_json(200, email: user.email, leitner_box_ids: ([] of String))
   end
 
   it "fails if not authenticated" do
