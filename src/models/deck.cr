@@ -1,8 +1,8 @@
 class Deck < BaseModel
   enum Period
-    Week  = 0
-    Month = 1
-    Year  = 2
+    Week
+    Month
+    Year
   end
 
   table do
