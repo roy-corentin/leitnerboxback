@@ -17,6 +17,7 @@ services:
     ports:
       - 3000:3000 # This is the Lucky Server port
       - 3001:3001 # This is the Lucky watcher reload port
+      - 8080:8080 # This is for crystal play
 
     entrypoint: ["docker/dev_entrypoint.sh"]
 
