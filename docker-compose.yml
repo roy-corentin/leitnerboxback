@@ -22,7 +22,7 @@ services:
     entrypoint: ["docker/dev_entrypoint.sh"]
 
   postgres:
-    image: postgres:14-alpine
+    image: postgres:15-alpine
     environment:
       POSTGRES_USER: lucky
       POSTGRES_PASSWORD: password
