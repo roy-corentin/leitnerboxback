@@ -8,12 +8,10 @@ services:
       DATABASE_URL: postgres://lucky:password@postgres:5432/lucky
       DEV_HOST: "0.0.0.0"
     volumes:
-      - type: bind
-        source: .
-        target: /app
-      - type: volume
-        source: shards_lib
-        target: /app/lib
+      - .:/app
+      - shards_lib:/app/lib
+      - app_bin:/app/bin
+      - build_cache:/root/.cache
     depends_on:
       - postgres
     ports:
@@ -27,10 +25,9 @@ services:
     environment:
       POSTGRES_USER: lucky
       POSTGRES_PASSWORD: password
+      POSTGRES_DB: lucky
     volumes:
-      - type: volume
-        source: postgres_data
-        target: /var/lib/postgresql
+      - postgres_data:/var/lib/postgresql/data
     ports:
       # The postgres database container is exposed on the host at port 6543 to
       # allow connecting directly to it with postgres clients. The port differs
@@ -41,5 +38,6 @@ services:
 
 volumes:
   postgres_data:
-  node_modules:
   shards_lib:
+  app_bin:
+  build_cache:

@@ -14,7 +14,7 @@ RUN apt-get update && \
 # Install lucky cli
 WORKDIR /lucky/cli
 RUN git clone https://github.com/luckyframework/lucky_cli . && \
-    git checkout v1.0.0 && \
+    git checkout v1.1.0 && \
     shards build --without-development && \
     cp bin/lucky /usr/bin
 
