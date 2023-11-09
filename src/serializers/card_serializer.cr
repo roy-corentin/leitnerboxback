@@ -3,6 +3,6 @@ class CardSerializer < BaseSerializer
   end
 
   def render
-    {id: @card.id, deck_id: @card.deck_id, card_type: @card.card_type}
+    {id: @card.id, deck_id: @card.deck_id, card_type: @card.card_type, content: @card.content}
   end
 end
