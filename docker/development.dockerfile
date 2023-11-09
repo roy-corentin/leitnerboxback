@@ -1,4 +1,4 @@
-FROM crystallang/crystal:1.9.2
+FROM crystallang/crystal:1.10.1
 
 # Install utilities required to make this Dockerfile run
 RUN apt-get update && \
