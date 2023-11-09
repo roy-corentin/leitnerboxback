@@ -8,7 +8,7 @@ describe Api::Decks::Create do
         box = LeitnerBoxFactory.create &.user_id(user.id)
         response = ApiClient.auth(user).exec(Api::Decks::Create, deck: valid_params(box.id))
 
-        response.should send_json(200, box_id: box.id, period_unit: 1, period_type: Deck::Period::Week)
+        response.should send_json(200, box_id: box.id, period_unit: 1, period_type: Deck::Period::Week.value)
       end
     end
     describe "when box doesn't exist" do
