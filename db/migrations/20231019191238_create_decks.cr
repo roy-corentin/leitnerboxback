@@ -6,7 +6,7 @@ class CreateDecks::V20231019191238 < Avram::Migrator::Migration::V1
       add_timestamps
       add_belongs_to box : LeitnerBox, on_delete: :nullify
       add period_unit : Int32
-      add period_type : String
+      add period_type : Int32
     end
   end
 
