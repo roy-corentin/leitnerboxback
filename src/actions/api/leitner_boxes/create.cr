@@ -1,6 +1,6 @@
 class Api::LeitnerBoxes::Create < ApiAction
-  post "/boxs" do
-    box = SaveLeitnerBox.create!(params, user_id: current_user.id)
-    json LeitnerBoxSerializer.new(box)
+  post "/leitner_boxes" do
+    leitner_box = SaveLeitnerBox.create!(params, user_id: current_user.id)
+    json LeitnerBoxSerializer.new(leitner_box)
   end
 end

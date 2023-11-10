@@ -6,7 +6,7 @@ class Deck < BaseModel
   end
 
   table do
-    belongs_to box : LeitnerBox
+    belongs_to leitner_box : LeitnerBox
     has_many cards : Card
 
     column period_unit : Int32

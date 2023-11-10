@@ -6,7 +6,7 @@ class User < BaseModel
     column email : String
     column encrypted_password : String
 
-    has_many boxes : LeitnerBox
+    has_many leitner_boxes : LeitnerBox
   end
 
   def emailable : Carbon::Address

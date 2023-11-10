@@ -4,7 +4,7 @@ class CreateDecks::V20231019191238 < Avram::Migrator::Migration::V1
     create table_for(Deck) do
       primary_key id : Int64
       add_timestamps
-      add_belongs_to box : LeitnerBox, on_delete: :nullify
+      add_belongs_to leitner_box : LeitnerBox, on_delete: :nullify
       add period_unit : Int32
       add period_type : Int32
     end

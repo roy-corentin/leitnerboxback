@@ -17,6 +17,6 @@ class Card < BaseModel
     belongs_to deck : Deck
 
     column card_type : Card::Type
-    column content : Card::Content, serialize: true # TODO Fix this
+    column content : Card::Content, serialize: true
   end
 end
