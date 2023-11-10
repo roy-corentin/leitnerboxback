@@ -12,6 +12,28 @@ describe Api::Cards::Create do
         response.should send_json(200, **valid_params(deck))
       end
     end
+
+    describe "with deck doesn't belong to user" do
+      it "fails to create card" do
+        user = UserFactory.create
+        box = LeitnerBoxFactory.create &.user_id(user.id)
+        deck = DeckFactory.create
+        response = ApiClient.auth(user).exec(Api::Cards::Create, card: valid_params(deck))
+
+        response.should send_json(400)
+      end
+    end
+
+    describe "with box doesn't belong to user" do
+      it "fails to create card" do
+        user = UserFactory.create
+        box = LeitnerBoxFactory.create
+        deck = DeckFactory.create &.box_id(box.id)
+        response = ApiClient.auth(user).exec(Api::Cards::Create, card: valid_params(deck))
+
+        response.should send_json(400)
+      end
+    end
   end
 
   describe "user not authenticated" do
