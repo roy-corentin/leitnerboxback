@@ -17,7 +17,7 @@ module ValidateObjectBelongsToUser
 
       if (!deck)
         deck_id.add_error "doesn't exist"
-        return nil
+        return
       end
 
       leitner_box = LeitnerBoxQuery.new.id(deck.leitner_box_id).first?
