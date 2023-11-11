@@ -9,7 +9,7 @@ describe Api::Cards::Create do
         deck = DeckFactory.create &.leitner_box_id(leitner_box.id)
         response = ApiClient.auth(user).exec(Api::Cards::Create, card: valid_params(deck))
 
-        response.should send_json(200, **valid_params(deck))
+        response.should send_json(201, **valid_params(deck))
       end
     end
 

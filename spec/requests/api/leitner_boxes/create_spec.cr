@@ -8,7 +8,7 @@ describe Api::LeitnerBoxes::Create do
 
         response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Create, leitner_box: valid_params())
 
-        response.should send_json(200, name: "TestBox")
+        response.should send_json(201, name: "TestBox")
       end
     end
   end
