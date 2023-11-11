@@ -43,7 +43,7 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          POSTGRES_PASSWORD: lucky
+          POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
         # Set health checks to wait until postgres has started
