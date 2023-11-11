@@ -1,5 +1,5 @@
 module ValidateObjectBelongsToUser
-  private def validate_box_belongs_to_user
+  private def validate_leitner_box_id_belongs_to_user
     leitner_box_id.value.try do |value|
       leitner_box = LeitnerBoxQuery.new.id(value).first?
 
