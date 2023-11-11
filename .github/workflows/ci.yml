@@ -41,9 +41,9 @@ jobs:
     continue-on-error: ${{ matrix.experimental }}
     services:
       postgres:
-        image: postgres:12-alpine
+        image: postgres:15-alpine
         env:
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: lucky
         ports:
           - 5432:5432
         # Set health checks to wait until postgres has started
