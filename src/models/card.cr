@@ -18,5 +18,6 @@ class Card < BaseModel
 
     column card_type : Card::Type
     column content : Card::Content, serialize: true
+    column last_review : Time?
   end
 end

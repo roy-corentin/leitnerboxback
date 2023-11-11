@@ -7,6 +7,7 @@ class CreateCards::V20231030200441 < Avram::Migrator::Migration::V1
       add_belongs_to deck : Deck, on_delete: :nullify
       add card_type : Int32
       add content : JSON::Any
+      add last_review : Time?
     end
   end
 
