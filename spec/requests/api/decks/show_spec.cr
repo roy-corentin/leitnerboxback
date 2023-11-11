@@ -14,7 +14,7 @@ describe Api::Decks::Show do
     end
 
     describe "deck does not exist" do
-      it "should return the existing deck" do
+      it "fails to get the deck" do
         user = UserFactory.create
 
         response = ApiClient.auth(user).exec(Api::Decks::Show.with(2))
@@ -23,7 +23,7 @@ describe Api::Decks::Show do
     end
 
     describe "deck does not belongs to current user" do
-      it "should return the existing deck" do
+      it "fails to get the deck" do
         user = UserFactory.create
         deck = DeckFactory.create
 
