@@ -8,9 +8,9 @@ class Card < BaseModel
   struct Content
     include JSON::Serializable
 
-    property front : String
-    property back : String
-    property? description : String = ""
+    property front : String?
+    property back : String?
+    property description : String?
   end
 
   table do
