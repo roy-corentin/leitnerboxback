@@ -12,7 +12,7 @@ describe Api::LeitnerBoxes::Show do
       end
     end
     describe "leitner_box does not exist" do
-      it "fails to get the box" do
+      it "fails to fetch the box" do
         user = UserFactory.create
 
         response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Show.with(2))
@@ -20,7 +20,7 @@ describe Api::LeitnerBoxes::Show do
       end
     end
     describe "leitner_box does not belongs to current user" do
-      it "fails to get the box" do
+      it "fails to fetch the box" do
         user = UserFactory.create
         leitner_box = LeitnerBoxFactory.create
 

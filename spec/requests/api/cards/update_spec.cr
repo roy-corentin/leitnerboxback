@@ -15,7 +15,7 @@ describe Api::Cards::Update do
     end
 
     describe "card does not exist" do
-      it "fails to update the card" do
+      it "fails to fetch the card" do
         user = UserFactory.create
 
         response = ApiClient.auth(user).exec(Api::Cards::Update.with(100, 100, 2), card: valid_params)
@@ -29,7 +29,7 @@ describe Api::Cards::Update do
         card = CardFactory.create
 
         response = ApiClient.auth(user).exec(Api::Cards::Update.with(100, 100, card.id), card: valid_params)
-        response.status_code.should eq(404)
+        response.status_code.should eq(400)
       end
     end
   end

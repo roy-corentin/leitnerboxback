@@ -15,7 +15,7 @@ describe Api::Cards::Show do
     end
 
     describe "card does not exist" do
-      it "fails to get the card" do
+      it "fails to fetch the card" do
         user = UserFactory.create
 
         response = ApiClient.auth(user).exec(Api::Cards::Show.with(100, 100, 2))
@@ -24,7 +24,7 @@ describe Api::Cards::Show do
     end
 
     describe "card does not belongs to current user" do
-      it "fails to get the card" do
+      it "fails to fetch the card" do
         user = UserFactory.create
         card = CardFactory.create
 

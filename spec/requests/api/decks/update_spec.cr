@@ -14,7 +14,7 @@ describe Api::Decks::Update do
     end
 
     describe "deck does not exist" do
-      it "fails to update the deck" do
+      it "fails to fetch the deck" do
         user = UserFactory.create
 
         response = ApiClient.auth(user).exec(Api::Decks::Update.with(100, 2), deck: valid_params)
@@ -28,7 +28,7 @@ describe Api::Decks::Update do
         deck = DeckFactory.create
 
         response = ApiClient.auth(user).exec(Api::Decks::Update.with(100, deck.id), deck: valid_params)
-        response.status_code.should eq(404)
+        response.status_code.should eq(400)
       end
     end
   end
