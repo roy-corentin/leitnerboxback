@@ -9,7 +9,7 @@ describe Api::Cards::Update do
         deck = DeckFactory.create &.leitner_box_id(leitner_box.id)
         card = CardFactory.create &.deck_id(deck.id)
 
-        response = ApiClient.auth(user).exec(Api::Cards::Update.with(card.id), card: valid_params)
+        response = ApiClient.auth(user).exec(Api::Cards::Update.with(leitner_box.id, deck.id, card.id), card: valid_params)
         response.should send_json(200, content: {front: "newFront"})
       end
     end
@@ -18,7 +18,7 @@ describe Api::Cards::Update do
       it "fails to update the card" do
         user = UserFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Cards::Update.with(2))
+        response = ApiClient.auth(user).exec(Api::Cards::Update.with(100, 100, 2), card: valid_params)
         response.status_code.should eq(404)
       end
     end
@@ -28,7 +28,7 @@ describe Api::Cards::Update do
         user = UserFactory.create
         card = CardFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Cards::Update.with(card.id))
+        response = ApiClient.auth(user).exec(Api::Cards::Update.with(100, 100, card.id), card: valid_params)
         response.status_code.should eq(404)
       end
     end

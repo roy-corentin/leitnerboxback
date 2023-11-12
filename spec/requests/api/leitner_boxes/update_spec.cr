@@ -15,7 +15,7 @@ describe Api::LeitnerBoxes::Update do
       it "fails to update the leitner_box" do
         user = UserFactory.create
 
-        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Update.with(2))
+        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Update.with(2), leitner_box: valid_params)
         response.status_code.should eq(404)
       end
     end
@@ -24,7 +24,7 @@ describe Api::LeitnerBoxes::Update do
         user = UserFactory.create
         leitner_box = LeitnerBoxFactory.create
 
-        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Update.with(leitner_box.id))
+        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Update.with(leitner_box.id), leitner_box: valid_params)
         response.status_code.should eq(404)
       end
     end

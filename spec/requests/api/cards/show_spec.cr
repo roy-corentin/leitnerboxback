@@ -9,7 +9,7 @@ describe Api::Cards::Show do
         deck = DeckFactory.create &.leitner_box_id(leitner_box.id)
         card = CardFactory.create &.deck_id(deck.id)
 
-        response = ApiClient.auth(user).exec(Api::Cards::Show.with(card.id))
+        response = ApiClient.auth(user).exec(Api::Cards::Show.with(leitner_box.id, deck.id, card.id))
         response.should send_json(200, id: card.id)
       end
     end
@@ -18,7 +18,7 @@ describe Api::Cards::Show do
       it "fails to get the card" do
         user = UserFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Cards::Show.with(2))
+        response = ApiClient.auth(user).exec(Api::Cards::Show.with(100, 100, 2))
         response.status_code.should eq(404)
       end
     end
@@ -28,7 +28,7 @@ describe Api::Cards::Show do
         user = UserFactory.create
         card = CardFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Cards::Show.with(card.id))
+        response = ApiClient.auth(user).exec(Api::Cards::Show.with(100, 100, card.id))
         response.status_code.should eq(404)
       end
     end

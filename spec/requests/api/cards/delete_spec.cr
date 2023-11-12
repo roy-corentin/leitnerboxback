@@ -9,7 +9,7 @@ describe Api::Cards::Delete do
         deck = DeckFactory.create &.leitner_box_id(leitner_box.id)
         card = CardFactory.create &.deck_id(deck.id)
 
-        response = ApiClient.auth(user).exec(Api::Cards::Delete.with(card.id))
+        response = ApiClient.auth(user).exec(Api::Cards::Delete.with(leitner_box.id, deck.id, card.id))
         response.should send_json(200, ok: "Card successfully deleted")
       end
     end
@@ -18,7 +18,7 @@ describe Api::Cards::Delete do
       it "fails to delete the card" do
         user = UserFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Cards::Delete.with(2))
+        response = ApiClient.auth(user).exec(Api::Cards::Delete.with(100, 100, 2))
         response.status_code.should eq(404)
       end
     end
@@ -28,7 +28,7 @@ describe Api::Cards::Delete do
         user = UserFactory.create
         card = CardFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Cards::Delete.with(card.id))
+        response = ApiClient.auth(user).exec(Api::Cards::Delete.with(100, 100, card.id))
         response.status_code.should eq(404)
       end
     end
