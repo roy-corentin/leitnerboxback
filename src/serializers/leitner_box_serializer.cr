@@ -3,6 +3,7 @@ class LeitnerBoxSerializer < BaseSerializer
   end
 
   def render
-    {name: @leitner_box.name, user_id: @leitner_box.user_id}
+    cards = LeitnerBoxQuery.new.card_ids(@leitner_box.id)
+    {name: @leitner_box.name, user_id: @leitner_box.user_id, cards_id: cards}
   end
 end

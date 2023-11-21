@@ -1,5 +1,5 @@
 class LeitnerBoxQuery < LeitnerBox::BaseQuery
-  def cards(leitner_box_id)
+  def card_ids(leitner_box_id)
     sql = <<-SQL
     SELECT cards.id
     FROM cards
