@@ -93,7 +93,7 @@ describe Api::Cards::Reviewed do
       end
 
       describe "when user was wrong" do
-        it "moves the card to the lower deck" do
+        it "moves the card to the first deck" do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
@@ -105,7 +105,7 @@ describe Api::Cards::Reviewed do
           response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: false)
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck2.id)
+          card.reload.deck_id.should eq(deck1.id)
         end
       end
     end

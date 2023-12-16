@@ -7,4 +7,8 @@ class DeckQuery < Deck::BaseQuery
     decks_level_desc_order = self.level.desc_order
     decks_level_desc_order.leitner_box_id(leitner_box_id).level.lt(start_level).first?
   end
+
+  def first_deck(leitner_box_id)
+    self.leitner_box_id(leitner_box_id).level.asc_order.first
+  end
 end

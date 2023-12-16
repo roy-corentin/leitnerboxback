@@ -18,7 +18,7 @@ class MoveCardAccordingToReview < Avram::Operation
     if result.value
       move_card_to_upper_deck
     else
-      move_card_to_lower_deck
+      move_card_to_first_deck
     end
   end
 
@@ -31,12 +31,12 @@ class MoveCardAccordingToReview < Avram::Operation
     end
   end
 
-  def move_card_to_lower_deck
+  def move_card_to_first_deck
     card = CardQuery.find(card_id.value.not_nil!)
     deck = DeckQuery.find(deck_id.value.not_nil!)
-    lower_deck = DeckQuery.new.lower_deck?(leitner_box_id.value.not_nil!, deck.level)
-    if lower_deck
-      SaveCard.update!(card, deck_id: lower_deck.id, leitner_box_id: lower_deck.leitner_box_id, user_id: user_id.value.not_nil!)
+    first_deck = DeckQuery.new.first_deck(leitner_box_id.value.not_nil!)
+    if first_deck
+      SaveCard.update!(card, deck_id: first_deck.id, leitner_box_id: first_deck.leitner_box_id, user_id: user_id.value.not_nil!)
     end
   end
 
