@@ -15,7 +15,7 @@ This project isn't just about managing a Leitner box, it's my journey of masteri
 ## Contributing
 Your contributions are invaluable! Whether you're a seasoned developer or just starting, your ideas and enhancements are welcome. Here's how you can contribute:
 
-- Clone the repository.
+- Fork the repository.
 - Create a new branch for your feature (`git checkout -b feature/YourFeatureName`).
 - Make your changes, commit them (`git commit -m 'Add feature'`), and push to the branch (`git push origin feature/YourFeatureName`).
 - Create a Pull Request detailing your changes.
