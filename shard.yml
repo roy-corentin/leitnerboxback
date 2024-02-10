@@ -2,13 +2,13 @@ name: leitnerboxback
 version: 0.1.0
 
 authors:
-  - Corentin Roy <croy@mesvaccins.net>
+  - Corentin Roy <corentin.roy02@laposte.net>
 
 targets:
   app:
     main: src/leitnerboxback.cr
 
-crystal: 1.11.0
+crystal: ">=1.10.1"
 
 dependencies:
   lucky:
@@ -25,7 +25,7 @@ dependencies:
     version: ~> 0.4.0
   lucky_env:
     github: luckyframework/lucky_env
-    version: ~> 0.1.4
+    version: ~> 0.2.0
   lucky_task:
     github: luckyframework/lucky_task
     version: ~> 0.3.0
@@ -34,4 +34,4 @@ dependencies:
     version: ~> 1.0.0
   jwt:
     github: crystal-community/jwt
-    version: ~> 1.6.0
+    version: ~> 1.6.1
