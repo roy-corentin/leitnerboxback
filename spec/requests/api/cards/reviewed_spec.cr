@@ -8,8 +8,8 @@ describe Api::Cards::Reviewed do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
-          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(1)
-          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(2)
+          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id)
+          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
           card = CardFactory.create &.deck_id(deck1.id)
 
@@ -25,8 +25,8 @@ describe Api::Cards::Reviewed do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
-          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(1)
-          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(2)
+          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id)
+          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
           card = CardFactory.create &.deck_id(deck1.id)
 
@@ -44,8 +44,8 @@ describe Api::Cards::Reviewed do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
-          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(1)
-          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(2)
+          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id)
+          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
           card = CardFactory.create &.deck_id(deck2.id)
 
@@ -61,8 +61,8 @@ describe Api::Cards::Reviewed do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
-          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(1)
-          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(2)
+          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id)
+          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
           card = CardFactory.create &.deck_id(deck2.id)
 
@@ -80,8 +80,8 @@ describe Api::Cards::Reviewed do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
-          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(1)
-          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(2)
+          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id)
+          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
           card = CardFactory.create &.deck_id(deck3.id)
 
@@ -97,8 +97,8 @@ describe Api::Cards::Reviewed do
           user = UserFactory.create
           leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
           deck1 = DeckFactory.create &.leitner_box_id(leitner_box.id)
-          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(1)
-          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id).level(2)
+          deck2 = DeckFactory.create &.leitner_box_id(leitner_box.id)
+          deck3 = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
           card = CardFactory.create &.deck_id(deck3.id)
 

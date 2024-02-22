@@ -24,7 +24,7 @@ class Deck < BaseModel
         return card
       end
     end
-    # TODO maybe raise an error instead of returning nil
+
     nil
   end
 
