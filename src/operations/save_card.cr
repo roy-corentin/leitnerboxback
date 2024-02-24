@@ -9,7 +9,17 @@ class SaveCard < Card::SaveOperation
 
   permit_columns deck_id, card_type, content
 
+  before_save set_default_deck_id
+
   before_save validate_leitner_box_id_belongs_to_user
   before_save validate_deck_id_belongs_to_leitner_box
   before_save validate_card_id_belongs_to_deck
+
+  private def set_default_deck_id
+    return unless deck_id.value.nil?
+    first_level_deck = DeckQuery.new.leitner_box_id(leitner_box_id.value.not_nil!).level.asc_order.first?
+    if first_level_deck
+      deck_id.value = first_level_deck.id
+    end
+  end
 end

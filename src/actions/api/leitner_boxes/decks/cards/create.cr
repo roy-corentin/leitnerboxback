@@ -1,4 +1,4 @@
-class Api::Cards::Create < ApiAction
+class Api::LeitnerBoxes::Decks::Cards::Create < ApiAction
   post "/leitner_boxes/:leitner_box_id/decks/:deck_id/cards" do
     card = SaveCard.create!(
       params,

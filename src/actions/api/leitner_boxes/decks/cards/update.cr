@@ -1,4 +1,4 @@
-class Api::Cards::Update < ApiAction
+class Api::LeitnerBoxes::Decks::Cards::Update < ApiAction
   put "/leitner_boxes/:leitner_box_id/decks/:deck_id/cards/:card_id" do
     card = CardQuery.find(card_id)
     card = SaveCard.update!(

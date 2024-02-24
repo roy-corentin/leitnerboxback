@@ -1,6 +1,6 @@
-require "../../../spec_helper"
+require "../../../../spec_helper"
 
-describe Api::Decks::Show do
+describe Api::LeitnerBoxes::Decks::Show do
   describe "user authenticated" do
     describe "deck exist" do
       it "should return the existing deck" do
@@ -8,7 +8,7 @@ describe Api::Decks::Show do
         leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
         deck = DeckFactory.create &.leitner_box_id(leitner_box.id)
 
-        response = ApiClient.auth(user).exec(Api::Decks::Show.with(leitner_box.id, deck.id))
+        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Show.with(leitner_box.id, deck.id))
         response.should send_json(200, id: deck.id)
       end
     end
@@ -17,7 +17,7 @@ describe Api::Decks::Show do
       it "fails to fetch the deck" do
         user = UserFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Decks::Show.with(100, 2))
+        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Show.with(100, 2))
         response.status_code.should eq(404)
       end
     end
@@ -27,7 +27,7 @@ describe Api::Decks::Show do
         user = UserFactory.create
         deck = DeckFactory.create
 
-        response = ApiClient.auth(user).exec(Api::Decks::Show.with(100, deck.id))
+        response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Show.with(100, deck.id))
         response.status_code.should eq(404)
       end
     end

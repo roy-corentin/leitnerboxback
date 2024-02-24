@@ -1,6 +1,6 @@
-require "../../../spec_helper"
+require "../../../../../spec_helper"
 
-describe Api::Cards::Reviewed do
+describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
   describe "user authenticated" do
     describe "when card is from first deck" do
       describe "when user was right" do
@@ -13,7 +13,7 @@ describe Api::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck1.id)
 
-          response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck1.id, card.id), result: true)
+          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck1.id, card.id), result: true)
           response.status_code.should eq(204)
 
           card.reload.deck_id.should eq(deck2.id)
@@ -30,7 +30,7 @@ describe Api::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck1.id)
 
-          response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck1.id, card.id), result: false)
+          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck1.id, card.id), result: false)
           response.status_code.should eq(204)
 
           card.reload.deck_id.should eq(deck1.id)
@@ -49,7 +49,7 @@ describe Api::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck2.id)
 
-          response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck2.id, card.id), result: true)
+          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck2.id, card.id), result: true)
           response.status_code.should eq(204)
 
           card.reload.deck_id.should eq(deck3.id)
@@ -66,7 +66,7 @@ describe Api::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck2.id)
 
-          response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck2.id, card.id), result: false)
+          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck2.id, card.id), result: false)
           response.status_code.should eq(204)
 
           card.reload.deck_id.should eq(deck1.id)
@@ -85,7 +85,7 @@ describe Api::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck3.id)
 
-          response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: true)
+          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: true)
           response.status_code.should eq(204)
 
           card.reload.deck_id.should eq(deck3.id)
@@ -102,7 +102,7 @@ describe Api::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck3.id)
 
-          response = ApiClient.auth(user).exec(Api::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: false)
+          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: false)
           response.status_code.should eq(204)
 
           card.reload.deck_id.should eq(deck1.id)
