@@ -4,9 +4,8 @@ class FetchNextCardToStudy < Avram::Operation
   attribute user_id : Int64
   attribute leitner_box_id : Int32
 
-  before_run do
-    validate_required leitner_box_id
-  end
+  before_run validate_required leitner_box_id
+  before_run validate_leitner_box_id_belongs_to_user
 
   def run
     # TODO remove 'not_nil!' x2
@@ -19,6 +18,4 @@ class FetchNextCardToStudy < Avram::Operation
       return card_to_study
     end
   end
-
-  before_run validate_leitner_box_id_belongs_to_user
 end

@@ -31,7 +31,7 @@ class Deck < BaseModel
   def need_review?
     return true if last_review.nil?
 
-    # TODO remove 'not_nil!' when Crystal fixed
+    # TODO remove 'not_nil!' when Crystal compile-time type check fixed
     next_review_date = last_review.not_nil! + period
     current_date = Time.utc
 
