@@ -12,15 +12,15 @@ describe Api::LeitnerBoxes::Decks::Create do
       end
 
       describe "when creating deck in two box" do
-        it "they must be at level 0" do
+        it "they must be at level 1" do
           user = UserFactory.create
           leitner_box1 = LeitnerBoxFactory.create &.user_id(user.id)
           leitner_box2 = LeitnerBoxFactory.create &.user_id(user.id)
           response1 = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Create.with(leitner_box1.id), deck: valid_params)
           response2 = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Create.with(leitner_box2.id), deck: valid_params)
 
-          response1.should send_json(201, leitner_box_id: leitner_box1.id, period_unit: 1, period_type: Deck::Period::Week, level: 0)
-          response2.should send_json(201, leitner_box_id: leitner_box2.id, period_unit: 1, period_type: Deck::Period::Week, level: 0)
+          response1.should send_json(201, leitner_box_id: leitner_box1.id, period_unit: 1, period_type: Deck::Period::Week, level: 1)
+          response2.should send_json(201, leitner_box_id: leitner_box2.id, period_unit: 1, period_type: Deck::Period::Week, level: 1)
         end
       end
     end
