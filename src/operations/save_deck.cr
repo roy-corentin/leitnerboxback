@@ -26,6 +26,6 @@ class SaveDeck < Deck::SaveOperation
   end
 
   def set_default_level
-    level.value ||= (DeckQuery.new.level.select_max || 0) + 1
+    level.value ||= (DeckQuery.new.leitner_box_id(leitner_box_id.value.not_nil!).level.select_max || 0) + 1
   end
 end
