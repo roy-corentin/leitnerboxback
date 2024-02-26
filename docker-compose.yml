@@ -37,6 +37,18 @@ services:
       # postgres://lucky:password@localhost:6543/lucky
       - 6543:5432
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8282:8282
+    command:
+      - "php"
+      - "-S"
+      - "[::]:8282"
+      - "-t"
+      - "/var/www/html"
+
 volumes:
   postgres_data:
   shards_lib:
