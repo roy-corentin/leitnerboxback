@@ -1,7 +1,7 @@
 class MoveCardAccordingToReview < Avram::Operation
   include ValidateObjectBelongsToUser
 
-  attribute result : Bool
+  attribute is_correct : Bool
   attribute user_id : Int64
   attribute leitner_box_id : Int32
   attribute deck_id : Int32
@@ -15,7 +15,7 @@ class MoveCardAccordingToReview < Avram::Operation
   end
 
   def run
-    if result.value
+    if is_correct.value
       move_card_to_upper_deck
     else
       move_card_to_first_deck
