@@ -11,9 +11,11 @@ class SaveCard < Card::SaveOperation
 
   before_save set_default_deck_id
 
-  before_save validate_leitner_box_id_belongs_to_user
-  before_save validate_deck_id_belongs_to_leitner_box
-  before_save validate_card_id_belongs_to_deck
+  before_save do
+    validate_leitner_box_id_belongs_to_user
+    validate_deck_id_belongs_to_leitner_box
+    validate_card_id_belongs_to_deck unless deck_id.changed?
+  end
 
   private def set_default_deck_id
     return unless deck_id.value.nil?

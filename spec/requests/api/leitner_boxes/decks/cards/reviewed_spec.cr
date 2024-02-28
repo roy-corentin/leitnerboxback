@@ -13,10 +13,20 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck1.id)
 
-          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck1.id, card.id), result: true)
+          response = ApiClient.auth(user)
+            .exec(
+              Api::LeitnerBoxes::Decks::Cards::Reviewed.with(
+                leitner_box.id,
+                deck1.id,
+                card.id
+              ),
+              is_correct: true
+            )
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck2.id)
+          card = card.reload
+          card.deck_id.should eq(deck2.id)
+          card.last_review.should_not be_nil
         end
       end
 
@@ -30,10 +40,20 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck1.id)
 
-          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck1.id, card.id), result: false)
+          response = ApiClient.auth(user)
+            .exec(
+              Api::LeitnerBoxes::Decks::Cards::Reviewed.with(
+                leitner_box.id,
+                deck1.id,
+                card.id
+              ),
+              is_correct: false
+            )
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck1.id)
+          card = card.reload
+          card.deck_id.should eq(deck1.id)
+          card.last_review.should_not be_nil
         end
       end
     end
@@ -49,10 +69,18 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck2.id)
 
-          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck2.id, card.id), result: true)
+          response = ApiClient.auth(user)
+            .exec(
+              Api::LeitnerBoxes::Decks::Cards::Reviewed.with(
+                leitner_box.id,
+                deck2.id,
+                card.id
+              ),
+              is_correct: true
+            )
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck3.id)
+          card = card.reload.deck_id.should eq(deck3.id)
         end
       end
 
@@ -66,10 +94,20 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck2.id)
 
-          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck2.id, card.id), result: false)
+          response = ApiClient.auth(user)
+            .exec(
+              Api::LeitnerBoxes::Decks::Cards::Reviewed.with(
+                leitner_box.id,
+                deck2.id,
+                card.id
+              ),
+              is_correct: false
+            )
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck1.id)
+          card = card.reload
+          card.deck_id.should eq(deck1.id)
+          card.last_review.should_not be_nil
         end
       end
     end
@@ -85,10 +123,20 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck3.id)
 
-          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: true)
+          response = ApiClient.auth(user)
+            .exec(
+              Api::LeitnerBoxes::Decks::Cards::Reviewed.with(
+                leitner_box.id,
+                deck3.id,
+                card.id
+              ),
+              is_correct: true
+            )
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck3.id)
+          card = card.reload
+          card.deck_id.should eq(deck3.id)
+          card.last_review.should_not be_nil
         end
       end
 
@@ -102,10 +150,20 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = CardFactory.create &.deck_id(deck3.id)
 
-          response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Decks::Cards::Reviewed.with(leitner_box.id, deck3.id, card.id), result: false)
+          response = ApiClient.auth(user)
+            .exec(
+              Api::LeitnerBoxes::Decks::Cards::Reviewed.with(
+                leitner_box.id,
+                deck3.id,
+                card.id
+              ),
+              is_correct: false
+            )
           response.status_code.should eq(204)
 
-          card.reload.deck_id.should eq(deck1.id)
+          card = card.reload
+          card.deck_id.should eq(deck1.id)
+          card.last_review.should_not be_nil
         end
       end
     end
