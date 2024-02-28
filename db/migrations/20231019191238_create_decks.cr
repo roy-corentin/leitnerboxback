@@ -8,7 +8,7 @@ class CreateDecks::V20231019191238 < Avram::Migrator::Migration::V1
       add period_unit : Int32
       add period_type : Int32
       add level : Int32, default: 0
-      add last_review : Time?
+      add last_review_at : Time?
     end
   end
 

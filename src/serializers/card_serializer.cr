@@ -8,7 +8,7 @@ class CardSerializer < BaseSerializer
       deck_id:     @card.deck_id,
       card_type:   @card.card_type,
       content:     @card.content,
-      last_review: @card.last_review,
+      last_review_at: @card.last_review_at,
     }
   end
 end

@@ -20,7 +20,7 @@ describe Api::LeitnerBoxes::NextCardToStudy do
         user = UserFactory.create
         leitner_box = LeitnerBoxFactory.create &.user_id(user.id)
         deck = DeckFactory.create &.leitner_box_id(leitner_box.id)
-        card = CardFactory.create &.deck_id(deck.id).last_review(Time.utc.shift(months: 1))
+        card = CardFactory.create &.deck_id(deck.id).last_review_at(Time.utc.shift(months: 1))
 
         response = ApiClient.auth(user).exec(Api::LeitnerBoxes::NextCardToStudy.with(leitner_box.id))
 

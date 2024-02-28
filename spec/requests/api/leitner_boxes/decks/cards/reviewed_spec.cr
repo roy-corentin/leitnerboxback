@@ -26,7 +26,7 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = card.reload
           card.deck_id.should eq(deck2.id)
-          card.last_review.should_not be_nil
+          card.last_review_at.should_not be_nil
         end
       end
 
@@ -53,7 +53,7 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = card.reload
           card.deck_id.should eq(deck1.id)
-          card.last_review.should_not be_nil
+          card.last_review_at.should_not be_nil
         end
       end
     end
@@ -107,7 +107,7 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = card.reload
           card.deck_id.should eq(deck1.id)
-          card.last_review.should_not be_nil
+          card.last_review_at.should_not be_nil
         end
       end
     end
@@ -136,7 +136,7 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = card.reload
           card.deck_id.should eq(deck3.id)
-          card.last_review.should_not be_nil
+          card.last_review_at.should_not be_nil
         end
       end
 
@@ -163,7 +163,7 @@ describe Api::LeitnerBoxes::Decks::Cards::Reviewed do
 
           card = card.reload
           card.deck_id.should eq(deck1.id)
-          card.last_review.should_not be_nil
+          card.last_review_at.should_not be_nil
         end
       end
     end

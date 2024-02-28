@@ -12,7 +12,7 @@ class Deck < BaseModel
     column period_unit : Int32
     column period_type : Deck::Period
     column level : Int32
-    column last_review : Time?
+    column last_review_at : Time?
   end
 
   def next_card_to_study?
@@ -20,7 +20,7 @@ class Deck < BaseModel
 
     current_date = Time.utc
     CardQuery.new.deck_id(self.id).each do |card|
-      if card.last_review.nil? || card.last_review.not_nil! + period < current_date
+      if card.last_review_at.nil? || card.last_review_at.not_nil! + period < current_date
         return card
       end
     end
@@ -29,10 +29,10 @@ class Deck < BaseModel
   end
 
   def need_review?
-    return true if last_review.nil?
+    return true if last_review_at.nil?
 
     # TODO remove 'not_nil!' when Crystal compile-time type check fixed
-    next_review_date = last_review.not_nil! + period
+    next_review_date = last_review_at.not_nil! + period
     current_date = Time.utc
 
     return next_review_date < current_date
