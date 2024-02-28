@@ -19,7 +19,7 @@ describe Api::LeitnerBoxes::Show do
               period_unit:    deck.period_unit,
               period_type:    deck.period_type,
               level:          deck.level,
-              last_review_at:    nil,
+              last_review_at: nil,
               card_ids:       [] of String,
             },
           ]
