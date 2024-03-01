@@ -11,21 +11,23 @@ class SaveDeck < Deck::SaveOperation
   before_save do
     validate_required leitner_box_id
     validate_required user_id
-  end
 
-  before_save validate_leitner_box_id_belongs_to_user
-  before_save validate_deck_id_belongs_to_leitner_box
+    validate_leitner_box_id_belongs_to_user
+    validate_deck_id_belongs_to_leitner_box
 
-  before_save set_default_level
-  before_save validate_unique_level_in_box
-
-  def validate_unique_level_in_box
-    if DeckQuery.new.leitner_box_id(leitner_box_id.value.not_nil!).level(level.value.not_nil!).first?
-      level.add_error "already exists"
-    end
+    set_default_level
+    validate_unique_level_in_box
   end
 
   def set_default_level
     level.value ||= (DeckQuery.new.leitner_box_id(leitner_box_id.value.not_nil!).level.select_max || 0) + 1
+  end
+
+  def validate_unique_level_in_box
+    if deck = DeckQuery.new.leitner_box_id(leitner_box_id.value.not_nil!).level(level.value.not_nil!).first?
+      return unless deck.id == deck_id.value
+
+      level.add_error "already exists"
+    end
   end
 end

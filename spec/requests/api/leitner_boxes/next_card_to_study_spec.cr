@@ -25,6 +25,7 @@ describe Api::LeitnerBoxes::NextCardToStudy do
         response = ApiClient.auth(user).exec(Api::LeitnerBoxes::NextCardToStudy.with(leitner_box.id))
 
         response.should send_json(200, ok: "LeitnerBox successfully studied")
+        deck.reload.last_review_at.should_not be_nil
       end
     end
   end
