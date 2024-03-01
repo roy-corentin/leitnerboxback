@@ -47,7 +47,7 @@ class Deck < BaseModel
     when Period::Year
       period_unit.year
     else
-      0.week
+      raise "Unknown period type"
     end
   end
 end
