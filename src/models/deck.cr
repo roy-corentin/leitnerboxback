@@ -32,7 +32,7 @@ class Deck < BaseModel
     next_review_date = last_review_at.not_nil! + period
     current_date = Time.utc
 
-    return next_review_date < current_date
+    return next_review_date <= current_date
   end
 
   private def period
