@@ -39,7 +39,7 @@ class Deck < BaseModel
   end
 
   private def period
-    case period_unit
+    case period_type
     when Period::Week
       period_unit.week
     when Period::Month
