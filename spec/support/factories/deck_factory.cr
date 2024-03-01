@@ -3,7 +3,7 @@ class DeckFactory < Avram::Factory
     leitner_box_id LeitnerBoxFactory.create.id
     period_unit 1
     period_type Deck::Period::Week
-    level (DeckQuery.new.level.select_max || 0) + 1 # TODO maybe remove
+    level (DeckQuery.new.level.select_max || 0) + 1
     last_review_at nil
   end
 end
