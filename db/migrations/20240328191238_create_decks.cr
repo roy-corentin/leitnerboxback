@@ -7,8 +7,7 @@ class CreateDecks::V20231019191238 < Avram::Migrator::Migration::V1
       add_belongs_to leitner_box : LeitnerBox, on_delete: :cascade
       add period_unit : Int32
       add period_type : Int32
-      add level : Int32, default: 0
-      add last_review_at : Time?
+      add level : Int32, default: 0, index: true
     end
   end
 
