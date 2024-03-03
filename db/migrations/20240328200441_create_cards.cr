@@ -7,7 +7,7 @@ class CreateCards::V20231030200441 < Avram::Migrator::Migration::V1
       add_belongs_to deck : Deck, on_delete: :cascade
       add card_type : Int32
       add content : JSON::Any
-      add last_review_at : Time?
+      add last_review_at : Time?, index: true
     end
   end
 
