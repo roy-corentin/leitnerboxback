@@ -14,27 +14,15 @@ class Deck < BaseModel
     column level : Int32
   end
 
-  def next_card_to_study?
-    return nil unless self.need_review?
-
-    current_date = Time.utc
+  def cards_to_study
+    current_time = Time.utc
     CardQuery.new.deck_id(self.id)
       .last_review_at.is_nil
-      .or(&.last_review_at.lte(current_date - period))
-      .first?
+      .or(&.last_review_at.lte(current_time - review_period))
+      .to_a
   end
 
-  def need_review?
-    return true if last_review_at.nil?
-
-    # TODO remove 'not_nil!' when Lucky compile-time type check fixed
-    next_review_date = last_review_at.not_nil! + period
-    current_date = Time.utc
-
-    return next_review_date <= current_date
-  end
-
-  private def period
+  private def review_period
     case period_type
     when Period::Week
       period_unit.week

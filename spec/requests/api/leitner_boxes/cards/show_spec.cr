@@ -12,7 +12,14 @@ describe Api::LeitnerBoxes::Cards::Show do
         card3 = CardFactory.create &.deck_id(deck.id)
 
         response = ApiClient.auth(user).exec(Api::LeitnerBoxes::Cards::Show.with(leitner_box.id))
+
+        response_json = JSON.parse(response.body)
+
         response.status_code.should eq(200)
+        response_json["cards"].size.should eq(3)
+        response_json["cards"][0]["id"].should eq(card1.id)
+        response_json["cards"][1]["id"].should eq(card2.id)
+        response_json["cards"][2]["id"].should eq(card3.id)
       end
     end
 
