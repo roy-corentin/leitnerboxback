@@ -10,7 +10,6 @@ class DeckSerializer < BaseSerializer
       period_unit:    @deck.period_unit,
       period_type:    @deck.period_type,
       level:          @deck.level,
-      last_review_at: @deck.last_review_at,
       card_ids:       card_ids,
     }
   end

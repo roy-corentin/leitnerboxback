@@ -12,7 +12,6 @@ class Deck < BaseModel
     column period_unit : Int32
     column period_type : Deck::Period
     column level : Int32
-    column last_review_at : Time?
   end
 
   def next_card_to_study?

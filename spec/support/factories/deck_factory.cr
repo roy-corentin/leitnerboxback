@@ -4,6 +4,5 @@ class DeckFactory < Avram::Factory
     period_unit 1
     period_type Deck::Period::Week
     level (DeckQuery.new.level.select_max || 0) + 1
-    last_review_at nil
   end
 end
